@@ -1,0 +1,20 @@
+Simple multiplayer game
+
+Use unity version 2022.3.3f1 to explore the project
+
+You'll see two scenes named: "Menu" and "Game"
+"Menu" Scene will let you create a new room by giving new room a name,
+You can also join a pre-existing room which will be also listed under join room panel which you can access by clicking on join room.
+By default the room is created with a player capacity of 10 you can change that if want by going to PhotonManager.cs
+By default player will be assigned a random name like "Player532" unless he sets that name under inspector of PhotonManager.cs,
+Name setting will be helpful because at the end of game winner name will be displayed to all losers.
+
+Only Masterclient or the person who created the room can start the game.
+
+Once the game is started all the player will go to "Game" scene where they can destroy a box by clicking on that box.
+First player to destory 8 boxes will be winner.
+
+Feel free to query me at vickychaudhary8955@gmail.com
+
+Thanks and regards,
+Vicky chaudhary
