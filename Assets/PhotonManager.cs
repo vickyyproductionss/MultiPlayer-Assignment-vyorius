@@ -142,7 +142,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		CreateRoomPanel.SetActive(false);
 		JoinRoomPanel.SetActive(false);
 		LobbyPanel.SetActive(true);
-		ShowLobbyDetails();
 		if(PhotonNetwork.IsMasterClient)
 		{
 			PlayGameButton.SetActive(true);
@@ -151,6 +150,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 		{
 			PlayGameButton.SetActive(false);
 		}
+		ShowLobbyDetails();
 	}
 	public override void OnPlayerEnteredRoom(Player newPlayer)
 	{
@@ -165,6 +165,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	{
 		if (PhotonNetwork.InRoom)
 		{
+			if(PhotonNetwork.CurrentRoom.PlayerCount < 2 && PhotonNetwork.IsMasterClient)
+			{
+				PlayGameButton.SetActive(false);
+			}
+			else if(PhotonNetwork.CurrentRoom.PlayerCount >= 2 && PhotonNetwork.IsMasterClient)
+			{
+				PlayGameButton.SetActive(true);
+			}
 			int totalPlayers = PhotonNetwork.CurrentRoom.PlayerCount;
 			TotalPlayerInLobbyText.text = "Total Players: " + totalPlayers;
 		}
@@ -178,7 +186,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 	{
 		if (PhotonNetwork.IsMasterClient)
 		{
-			PhotonNetwork.LoadLevel("Game");
+			PhotonNetwork.LoadLevel("BoxingGame");
 			PhotonNetwork.CurrentRoom.IsVisible = false;
 		}
 	}
